@@ -16,53 +16,44 @@ yarn add react-native-read-more-text-hooks
 ### Usage
 
 ```javascript
-export class DescriptionCard extends React.Component {
-  _renderTruncatedFooter = (handlePress) => {
-    return (
-      <RegularText style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
-        Read more
-      </RegularText>
-    );
-  }
+import React from "react";
+import { Text, View } from "react-native";
+import ReadMore from "react-native-read-more-text-hooks";
 
-  _renderRevealedFooter = (handlePress) => {
-    return (
-      <RegularText style={{color: Colors.tintColor, marginTop: 5}} onPress={handlePress}>
-        Show less
-      </RegularText>
-    );
-  }
+const _renderTruncatedFooter = (handlePress: () => void) => {
+  return (
+    <Text style={{ marginTop: 5 }} onPress={handlePress}>
+      Read more
+    </Text>
+  );
+};
 
-  _handleTextReady = () => {
-    // ...
-  }
-  
-  render() {
-    let { text } = this.props;
+const _renderRevealedFooter = (handlePress: () => void) => {
+  return (
+    <Text style={{ marginTop: 5 }} onPress={handlePress}>
+      Show less
+    </Text>
+  );
+};
 
-    return (
-      <View>
-        <View style={styles.cardLabel}>
-          <BoldText style={styles.cardLabelText}>
-            Description
-          </BoldText>
-        </View>
+const _handleTextReady = () => {
+  // ...
+};
 
-        <View style={styles.card}>
-          <View style={styles.cardBody}>
-            <ReadMore
-              numberOfLines={3}
-              renderTruncatedFooter={this._renderTruncatedFooter}
-              renderRevealedFooter={this._renderRevealedFooter}
-              onReady={this._handleTextReady}>
-              <RegularText style={styles.cardText}>
-                {text}
-              </RegularText>
-            </ReadMore>
-          </View>
-        </View>
-      </View>
-    );
-  }
-}
+const DescriptionCard = ({ text }: { text: string }) => (
+  <View>
+    <Text>Description</Text>
+
+    <ReadMore
+      numberOfLines={3}
+      renderTruncatedFooter={_renderTruncatedFooter}
+      renderRevealedFooter={_renderRevealedFooter}
+      onReady={_handleTextReady}
+    >
+      <Text>{text}</Text>
+    </ReadMore>
+  </View>
+);
+
+export default DescriptionCard;
 ```
