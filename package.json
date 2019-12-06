@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Add a 'Read More' and optionally a 'Read Less' button to text that exceeds a given number of lines",
   "repository": "https://github.com/astoimenov/react-native-read-more-text-hooks",
-  "main": "index.js",
+  "main": "index.tsx",
   "files": [
     "index.js",
     "README.md"
