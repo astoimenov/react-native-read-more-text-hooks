@@ -6,12 +6,6 @@ import React, {
   ReactNode
 } from "react";
 import { Text, View } from "react-native";
-import styled from "styled-components";
-
-const HiddenView = styled(View)`
-  opacity: 0;
-  position: absolute;
-`;
 
 const measureHeightAsync = async (
   component: React.RefObject<Text>
@@ -127,11 +121,11 @@ const ReadMore = ({
 
   return (
     <View>
-      <HiddenView>
+      <View style={{ opacity: 0, position: "absolute" }}>
         <Text numberOfLines={measured ? numberOfLines : 0} ref={textRef}>
           {children}
         </Text>
-      </HiddenView>
+      </View>
 
       <Text numberOfLines={showAllText ? 0 : numberOfLines}>{children}</Text>
 
